@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,7 @@ Route::get('/logout', [AdminController::class,'logout']);
 
 Route::resource('categories', CategoryController::class);
 Route::get('/categories/{category}', [CategoryController::class,'change_status']);
+
+
+Route::resource('subcategories', SubCategoryController::class);
+Route::get('/subcategories/{category}', [SubCategoryController::class,'change_status']);
