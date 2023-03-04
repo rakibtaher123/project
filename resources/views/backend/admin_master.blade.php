@@ -319,7 +319,7 @@
                                     <span>Account Settings</span>
                                 </li>
                                 <li><a href="#"><i class="halflings-icon user"></i> Profile</a></li>
-                                <li><a href="{{ url('/logout')}}"><i class="halflings-icon off"></i> Logout</a></li>
+                                <li><a href="{{ url('/logout') }}"><i class="halflings-icon off"></i> Logout</a></li>
                             </ul>
                         </li>
                         <!-- end: User Dropdown -->
@@ -339,7 +339,8 @@
             <div id="sidebar-left" class="span2">
                 <div class="nav-collapse sidebar-nav">
                     <ul class="nav nav-tabs nav-stacked main-menu">
-                        <li><a href="{{url('/dashboard')}}"><i class="icon-bar-chart"></i><span class="hidden-tablet">
+                        <li><a href="{{ url('/dashboard') }}"><i class="icon-bar-chart"></i><span
+                                    class="hidden-tablet">
                                     Dashboard</span></a></li>
                         {{-- <li><a href="messages.html"><i class="icon-envelope"></i><span class="hidden-tablet">
                                     Messages</span></a></li>
@@ -353,10 +354,12 @@
                             <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span
                                     class="hidden-tablet"> Category</span></a>
                             <ul>
-                                <li><a class="submenu" href="{{url('/categories/create')}}"><i class="icon-file-alt"></i><span
-                                            class="hidden-tablet"> Add Category</span></a></li>
-                                <li><a class="submenu" href="submenu2.html"><i class="icon-file-alt"></i><span
-                                            class="hidden-tablet"> All Category</span></a></li>
+                                <li><a class="submenu" href="{{ url('/categories/create') }}"><i
+                                            class="icon-file-alt"></i><span class="hidden-tablet"> Add
+                                            Category</span></a></li>
+                                <li><a class="submenu" href="{{ url('/categories/') }}"><i
+                                            class="icon-file-alt"></i><span class="hidden-tablet"> All
+                                            Category</span></a></li>
                                 {{-- <li><a class="submenu" href="submenu3.html"><i class="icon-file-alt"></i><span
                                             class="hidden-tablet"> Sub Menu 3</span></a></li> --}}
                             </ul>

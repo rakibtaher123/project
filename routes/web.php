@@ -31,4 +31,5 @@ Route::get('/dashboard', [AdminController::class,'dashboard']);
 Route::post('/admin-dashboard', [AdminController::class,'show_dashboard']);
 Route::get('/logout', [AdminController::class,'logout']);
 
-Route::resource('/categories/', CategoryController::class);
+Route::resource('categories', CategoryController::class);
+Route::get('/categories/{category}', [CategoryController::class,'change_status']);

@@ -15,7 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        // return 12313;
+        $category = Category::all();
+        return View('backend.category.index', compact('category'));
     }
 
     /**
@@ -39,16 +41,18 @@ class CategoryController extends Controller
         $category = new Category;
         $category->name = $request->name;
         $category->description = $request->description;
-        if($request->hasFile('image')){
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = $category->name.'.'.$extension;
-            $file->move('category', $filename);
-            $category->image = $filename;
-        }
-        $category->save();
-        return redirect()->back()->with('message','added category');
+        // laravel functionality path is storage->app->'category(all images)' {{limitation not work multiple images}}
+        $category->image = $request->image->store('category');
 
+        // if($request->hasFile('image')){
+        //     $file = $request->file('image');
+        //     $extension = $file->getClientOriginalExtension();
+        //     $filename = $category->name.'.'.$extension;
+        //     $file->move('category', $filename);
+        //     $category->image = $filename;
+        // }
+        $category->save();
+        return redirect()->back()->with('message', 'added category');
     }
 
     /**
@@ -57,20 +61,31 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
+    public function change_status(Category $category)
+    {
+        return $category;
+        if ($category->status == 1) {
+            $category->update(['status' => 0]);
+        } else {
+            $category->update(['status' => 1]);
+        }
+        return redirect()->back()->with('message', 'category status updated successfully');
+    }
     public function show($id)
     {
-        //
+        return $id;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Category $category
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        // return $category;
+        return View('backend.category.edit', compact('category'));
     }
 
     /**
@@ -80,9 +95,25 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $category->name = $request->name;
+        $category->description = $request->description;
+        if ($request->image) {
+            $category->image = $request->image->store('category');
+        }
+        $category->save();
+        return redirect('/categories')->with('message', "updated");
+        // return $request->file('image')->store('category');
+        // $update = $category->update([
+        //     'name' => $request->name,
+        //     'description' => $request->description,
+        //     'image' => $request->file('image')->store('category'),
+        // ]);
+        // if($update)
+        // {
+        //     return redirect('/categories')->with('message', "updated");
+        // }
     }
 
     /**
@@ -93,6 +124,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = Category::find($id);
+        $delete->delete();
+        return redirect('/categories')->with('message', "deleted");
     }
 }
