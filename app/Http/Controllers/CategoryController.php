@@ -63,7 +63,7 @@ class CategoryController extends Controller
      */
     public function change_status(Category $category)
     {
-        return $category;
+        // return $category;
         if ($category->status == 1) {
             $category->update(['status' => 0]);
         } else {

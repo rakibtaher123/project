@@ -37,4 +37,4 @@ Route::get('/categories/{category}', [CategoryController::class,'change_status']
 
 
 Route::resource('subcategories', SubCategoryController::class);
-Route::get('/subcategories/{category}', [SubCategoryController::class,'change_status']);
+Route::get('/subcategories/{subcategory}', [SubCategoryController::class,'change_status']);
