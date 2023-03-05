@@ -6,6 +6,7 @@ use App\Http\Controllers\SizeController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ColorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 
@@ -51,6 +52,9 @@ Route::get('/units/{unit}', [UnitController::class,'change_status']);
 
 Route::resource('sizes', SizeController::class);
 Route::get('/sizes/{size}', [SizeController::class,'change_status']);
+
+Route::resource('colors', ColorController::class);
+Route::get('/colors/{color}', [ColorController::class,'change_status']);
 
 
 
