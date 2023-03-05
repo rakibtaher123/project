@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 
@@ -38,3 +39,7 @@ Route::get('/categories/{category}', [CategoryController::class,'change_status']
 
 Route::resource('subcategories', SubCategoryController::class);
 Route::get('/subcategories/{subcategory}', [SubCategoryController::class,'change_status']);
+
+
+Route::resource('brands', BrandController::class);
+Route::get('/brands/{brand}', [BrandController::class,'change_status']);
