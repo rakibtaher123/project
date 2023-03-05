@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SizeController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BrandController;
@@ -47,4 +48,9 @@ Route::get('/brands/{brand}', [BrandController::class,'change_status']);
 
 Route::resource('units', UnitController::class);
 Route::get('/units/{unit}', [UnitController::class,'change_status']);
+
+Route::resource('sizes', SizeController::class);
+Route::get('/sizes/{size}', [SizeController::class,'change_status']);
+
+
 
