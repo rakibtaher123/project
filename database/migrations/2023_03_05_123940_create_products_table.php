@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->string('code')->unique();
             $table->string('name');
             $table->string('description');
+            $table->string('image');
             $table->double('price',10,2);
             $table->double('discount',10,2)->nullable();
             $table->boolean('status')->default('1');
