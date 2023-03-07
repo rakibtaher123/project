@@ -8,7 +8,7 @@
                 <li><a href="#"><i class="fa fa-map-marker"></i> Uttara , Dhaka 1230</a></li>
             </ul>
             <ul class="header-links pull-right">
-                <li><a href="#"><i class="fa fa-try"></i> BD</a></li>
+                <li><a href="#"><i>&#2547;</i> BD</a></li>
                 <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
             </ul>
         </div>

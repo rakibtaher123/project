@@ -16,7 +16,8 @@
                             </div>
                             <div class="shop-body">
                                 <h3>{{ $item->name }}<br>Collection</h3>
-                                <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="{{ url('/product-by-cat/' . $item->id) }}" class="cta-btn">Shop now <i
+                                        class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -46,7 +47,7 @@
                                 {{-- <li class="active"><a data-toggle="tab" href="#tab1">{{$categories[0]->name}}</a></li> --}}
                                 @foreach ($categories as $item)
                                     {{-- <li class="active"><a data-toggle="tab" href="#tab1">{{$item->name}}</a></li> --}}
-                                    <li><a data-toggle="tab" href="#tab1">{{ $item->name }}</a></li>
+                                    <li><a href="{{ url('/product-by-cat/' . $item->id) }}">{{ $item->name }}</a></li>
                                 @endforeach
 
                                 {{-- <li><a data-toggle="tab" href="#tab1">Smartphones</a></li>
@@ -68,7 +69,7 @@
                                     <!-- product -->
                                     @foreach ($product as $item)
                                         <div class="product">
-                                            <div class="product-img"><a href="{{ url('/view-detials',$item->id) }}">
+                                            <div class="product-img"><a href="{{ url('/view-detials', $item->id) }}">
                                                     <img src="{{ asset('image/' . $item->image) }}" alt=""
                                                         height="230px">
                                                     <div class="product-label">
@@ -79,15 +80,16 @@
                                             </div>
                                             <div class="product-body">
                                                 <p class="product-category">
-                                                    <a href="{{ url('/view-detials',$item->id) }}">
+                                                    <a href="{{ url('/view-detials', $item->id) }}">
                                                         {{ $categories->find($item->cat_id)->name }}
                                                     </a>
                                                 </p>
                                                 <h3 class="product-name"><a
-                                                        href="{{ url('/view-detials',$item->id) }}">{{ $item->name }} goes
+                                                        href="{{ url('/view-detials', $item->id) }}">{{ $item->name }}
+                                                        goes
                                                         here</a></h3>
                                                 <h4 class="product-price"><a
-                                                        href="{{ url('/view-detials',$item->id) }}">&#2547;{{ $item->price - $item->discount }}
+                                                        href="{{ url('/view-detials', $item->id) }}">&#2547;{{ $item->price - $item->discount }}
                                                         <del class="product-old-price">&#2547;{{ $item->price }}</del></a>
                                                 </h4>
                                                 <div class="product-rating">
@@ -192,7 +194,7 @@
                             <ul class="section-tab-nav tab-nav">
                                 @foreach ($categories as $item)
                                     {{-- <li class="active"><a data-toggle="tab" href="#tab1">{{$item->name}}</a></li> --}}
-                                    <li><a data-toggle="tab" href="#tab1">{{ $item->name }}</a></li>
+                                    <li><a href="{{ url('/product-by-cat/' . $item->id) }}">{{ $item->name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
