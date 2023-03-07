@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\UnitController;
@@ -33,6 +34,7 @@ Route::get('/view-detials/{id}', [HomeController::class,'view_details']);
 Route::get('/product-by-cat/{id}', [HomeController::class,'product_by_cat']);
 Route::get('/product-by-subcat/{id}', [HomeController::class,'product_by_subcat']);
 Route::get('/product-by-brand/{id}', [HomeController::class,'product_by_brand']);
+Route::post('/add-to-card', [CardController::class,'add_to_card']);
 
 
 // backend
