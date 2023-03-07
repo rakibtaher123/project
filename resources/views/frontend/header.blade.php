@@ -25,7 +25,7 @@
                 <div class="col-md-3">
                     <div class="header-logo">
                         <a href="{{ url('/') }}" class="logo">
-                            <img src="./img/logo.png" alt="" width="236" height="74px">
+                            <img src="{{ asset('img/logo.png') }}" alt="" width="236" height="74px">
                         </a>
                     </div>
                 </div>

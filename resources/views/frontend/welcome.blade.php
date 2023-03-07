@@ -68,22 +68,27 @@
                                     <!-- product -->
                                     @foreach ($product as $item)
                                         <div class="product">
-                                            <div class="product-img">
-                                                <img src="{{ asset('image/' . $item->image) }}" alt=""
-                                                    height="230px">
-                                                <div class="product-label">
-                                                    {{-- <span class="sale">-30%</span> --}}
-                                                    <span class="new">NEW</span>
-                                                </div>
+                                            <div class="product-img"><a href="{{ url('/view-detials',$item->id) }}">
+                                                    <img src="{{ asset('image/' . $item->image) }}" alt=""
+                                                        height="230px">
+                                                    <div class="product-label">
+                                                        {{-- <span class="sale">-30%</span> --}}
+                                                        <span class="new">NEW</span>
+                                                    </div>
+                                                </a>
                                             </div>
                                             <div class="product-body">
                                                 <p class="product-category">
-                                                    {{ $categories->find($item->cat_id)->name }}
+                                                    <a href="{{ url('/view-detials',$item->id) }}">
+                                                        {{ $categories->find($item->cat_id)->name }}
+                                                    </a>
                                                 </p>
-                                                <h3 class="product-name"><a href="#">{{ $item->name }} goes
+                                                <h3 class="product-name"><a
+                                                        href="{{ url('/view-detials',$item->id) }}">{{ $item->name }} goes
                                                         here</a></h3>
-                                                <h4 class="product-price">&#2547;{{ $item->price - $item->discount }} <del
-                                                        class="product-old-price">&#2547;{{ $item->price }}</del>
+                                                <h4 class="product-price"><a
+                                                        href="{{ url('/view-detials',$item->id) }}">&#2547;{{ $item->price - $item->discount }}
+                                                        <del class="product-old-price">&#2547;{{ $item->price }}</del></a>
                                                 </h4>
                                                 <div class="product-rating">
                                                     <i class="fa fa-star"></i>
@@ -200,7 +205,7 @@
                     <div class="row">
                         <div class="products-tabs">
                             <!-- tab -->
-                            <div id="tab2" class="tab-pane fade in active">
+                            <div id="tab1" class="tab-pane fade in active">
                                 <div class="products-slick" data-nav="#slick-nav-2">
                                     <!-- product -->
                                     <div class="product">

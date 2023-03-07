@@ -25,4 +25,17 @@ class HomeController extends Controller
         $colors = Color::all();
         return View('frontend.welcome', compact('product', 'categories', 'subcategories', 'brands', 'units', 'sizes', 'colors'));
     }
+    public function view_details($id)
+    {
+        $product = Product::find($id);
+        $categories = Category::all();
+        $subcategories = SubCategory::all();
+        $brands = Brand::all();
+        $units = Unit::all();
+        $sizes = Size::find($product->size_id);
+        $colors = Color::find($product->color_id);
+        $cat_id = $product->cat_id;
+        $related_product = Product::where('cat_id', $cat_id)->limit(4)->get();
+        return View('frontend.pages.product_view', compact('product', 'categories', 'subcategories', 'brands', 'units', 'sizes', 'colors', 'related_product'));
+    }
 }

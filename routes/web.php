@@ -29,6 +29,7 @@ use App\Http\Controllers\SubCategoryController;
 
 // frontend
 Route::get('/', [HomeController::class,'index']);
+Route::get('/view-detials/{id}', [HomeController::class,'view_details']);
 
 
 // backend
