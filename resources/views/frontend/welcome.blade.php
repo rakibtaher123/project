@@ -108,7 +108,7 @@
                                                             class="tooltipp">quick view</span></button>
                                                 </div>
                                             </div>
-                                            <form action="{{ url('add-to-card') }}" method="post">
+                                            <form action="{{ url('add-to-cart') }}" method="post">
                                                 @csrf
                                                 <div class="add-to-cart">
                                                     <input type="hidden" name="quantity" value="1">
