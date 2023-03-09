@@ -9,7 +9,14 @@
             </ul>
             <ul class="header-links pull-right">
                 <li><a href="#"><i>&#2547;</i> BD</a></li>
-                <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+                @php
+                    $customer = Session::get('id');
+                @endphp
+                @if ($customer != null)
+                    <li><a href="{{ url('/customer-logout') }}"><i class="fa fa-user-o"></i> Logout</a></li>
+                @else
+                    <li><a href="{{ url('/login-check') }}"><i class="fa fa-user-o"></i> Login</a></li>
+                @endif
             </ul>
         </div>
     </div>
@@ -88,7 +95,8 @@
                                                         class="qty">{{ $item['quantity'] }}x</span>&#2547;{{ $item['price'] }}
                                                 </h4>
                                             </div>
-                                            <a class="delete" href="{{url('delete-cart/'.$item['id'])}}"><i class="fa fa-close"></i></a>
+                                            <a class="delete" href="{{ url('delete-cart/' . $item['id']) }}"><i
+                                                    class="fa fa-close"></i></a>
                                         </div>
                                     @endforeach
 
@@ -100,8 +108,16 @@
                                     <h5>SUBTOTAL: &#2547;{{ Cart::getTotal() }}</h5>
                                 </div>
                                 <div class="cart-btns">
-                                    <a href="#">View Cart</a>
-                                    <a href="#">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                                    {{-- <a href="{{ url('/login-check') }}">View Cart</a> --}}
+                                    @if ($customer != null)
+                                        <a style="width: 100%; background: #d10024"
+                                            href="{{ url('/checkout') }}">Checkout <i
+                                                class="fa fa-arrow-circle-right"></i></a>
+                                    @else
+                                        <a style="width: 100%; background: #d10024"
+                                            href="{{ url('/login-check') }}">Login <i
+                                                class="fa fa-arrow-circle-right"></i></a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
