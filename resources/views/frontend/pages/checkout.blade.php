@@ -19,7 +19,7 @@ use App\Models\Shipping;
                     @if ($customer != null)
                         <div class="billing-details">
                             <div class="section-title">
-                                <h3 class="title">SHIPING address</h3>
+                                <h3 class="title">SHIPING address {{ Session()->get('sid') }}</h3>
                             </div>
                             <div class="form-group">
                                 <input class="input" type="text" name="name" placeholder="Full Name"
@@ -46,7 +46,8 @@ use App\Models\Shipping;
                                     value="{{ $customer->zip_code }}">
                             </div>
                             <div class="form-group">
-                                <input class="input" type="tel" name="mobile" placeholder="Mobile No." value="{{ $customer->mobile}}">
+                                <input class="input" type="tel" name="mobile" placeholder="Mobile No."
+                                    value="{{ $customer->mobile }}">
                             </div>
                             <a href="{{ url('/payment') }}" class="primary-btn" style="float: right">next</a>
                         </div>
@@ -57,7 +58,7 @@ use App\Models\Shipping;
 
                             <div class="billing-details">
                                 <div class="section-title">
-                                    <h3 class="title">SHIPING address1</h3>
+                                    <h3 class="title">SHIPING address{{ Session()->get('sid') }}</h3>
                                 </div>
                                 <div class="form-group">
                                     <input class="input" type="text" name="name" placeholder="Full Name"

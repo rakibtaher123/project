@@ -34,7 +34,7 @@ class CustomerController extends Controller
         // return $customer->id;
         Session::put('id', $customer->id);
         Session::put('name', $customer->name);
-        return redirect()->back();
+        return Redirect::to('checkout');
     }
     public function logout()
     {
