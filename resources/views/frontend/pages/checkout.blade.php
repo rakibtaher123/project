@@ -14,7 +14,7 @@ use App\Models\Shipping;
                 <div class="col-md-8">
                     <!-- Billing Details -->
                     @php
-                        $customer = App\Models\Shipping::find(Session::get('id'));
+                        $customer = App\Models\Shipping::find(Session::get('sid'));
                     @endphp
                     @if ($customer != null)
                         <div class="billing-details">
@@ -62,7 +62,7 @@ use App\Models\Shipping;
                                 </div>
                                 <div class="form-group">
                                     <input class="input" type="text" name="name" placeholder="Full Name"
-                                        value="12">
+                                        value="">
                                 </div>
                                 <div class="form-group">
                                     <input class="input" type="email" name="email" placeholder="Email" value="">

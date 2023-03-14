@@ -57,7 +57,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="index.html"><span>Metro</span></a>
+                <a class="brand" href="{{url('/dashboard')}}"><span>Singer</span></a>
 
                 <!-- start: Header Menu -->
                 <div class="nav-no-collapse header-nav">
@@ -434,9 +434,9 @@
                                             Product</span></a></li>
                             </ul>
                         </li>
-                        <li><a href="form.html"><i class="icon-edit"></i><span class="hidden-tablet">
-                                    Forms</span></a></li>
-                        <li><a href="chart.html"><i class="icon-list-alt"></i><span class="hidden-tablet">
+                        <li><a href="{{url('/manage-order')}}"><i class="icon-edit"></i><span class="hidden-tablet">
+                                    Orders</span></a></li>
+                        {{-- <li><a href="chart.html"><i class="icon-list-alt"></i><span class="hidden-tablet">
                                     Charts</span></a></li>
                         <li><a href="typography.html"><i class="icon-font"></i><span class="hidden-tablet">
                                     Typography</span></a></li>
@@ -451,7 +451,7 @@
                         <li><a href="icon.html"><i class="icon-star"></i><span class="hidden-tablet">
                                     Icons</span></a></li>
                         <li><a href="login.html"><i class="icon-lock"></i><span class="hidden-tablet"> Login
-                                    Page</span></a></li>
+                                    Page</span></a></li> --}}
                     </ul>
                 </div>
             </div>

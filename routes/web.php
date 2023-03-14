@@ -8,6 +8,7 @@ use App\Http\Controllers\UnitController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ColorController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
@@ -77,3 +78,10 @@ Route::get('/colors/{color}', [ColorController::class, 'change_status']);
 
 Route::resource('products', ProductController::class);
 Route::get('/products/{product}', [ProductController::class, 'change_status']);
+
+
+// order related routes
+Route::get('/manage-order', [OrderController::class, 'manage_order']);
+Route::get('/view-order/{id}', [OrderController::class, 'view_order']);
+Route::get('/manage-order/{id}', [OrderController::class, 'change_status']);
+Route::delete('/manage-order/{id}', [OrderController::class, 'destroy'])->name('manage-order.destroy');
