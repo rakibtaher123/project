@@ -41,14 +41,18 @@
                 <!-- SEARCH BAR -->
                 <div class="col-md-6">
                     <div class="header-search">
-                        <form>
-                            <select class="input-select">
-                                <option value="0">All Categories</option>
+                        <form action="{{ url('/search') }}" method="GET">
+                            <select class="input-select" name="category">
+                                <option value="ALL" {{ request('category') == 'ALL' ? 'selected' : '' }}>All
+                                    Categories
+                                </option>
                                 @foreach ($categories as $item)
-                                    <option>{{ $item->name }}</option>
+                                    <option value="{{ $item->id }}"
+                                        {{ request('category') == $item->id ? 'selected' : '' }}>{{ $item->name }}
+                                    </option>
                                 @endforeach
                             </select>
-                            <input class="input" placeholder="Search here">
+                            <input class="input" name="product" placeholder="Search here" value="{{ request('product')}}">
                             <button class="search-btn">Search</button>
                         </form>
                     </div>

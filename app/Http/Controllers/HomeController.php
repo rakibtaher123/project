@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Color;
 use App\Models\Size;
 use App\Models\Unit;
 use App\Models\Brand;
+use App\Models\Color;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,23 @@ class HomeController extends Controller
         $units = Unit::all();
         $sizes = Size::all();
         $colors = Color::all();
-        return View('frontend.welcome', compact('product', 'categories', 'subcategories', 'brands', 'units', 'sizes', 'colors'));
+        $top_sales = DB::table('products')
+            ->leftJoin('order_details', 'products.id', '=', 'order_details.product_id')
+            ->selectRaw('products.id, SUM(order_details.product_sales_qty) as total')
+            ->groupBy('products.id')
+            ->orderBy('total', 'desc')
+            ->take(8)
+            ->get();
+        $topProducts = [];
+        foreach ($top_sales as $s) {
+
+            $p = Product::findOrFail($s->id);
+            // return $p->totalQty=$s->total;
+            $p->totalQty = $s->total;
+            $topProducts[] = $p;
+        }
+        // return $topProducts;
+        return View('frontend.welcome', compact('product', 'categories', 'subcategories', 'brands', 'units', 'sizes', 'colors', 'topProducts'));
     }
     public function view_details($id)
     {
@@ -38,25 +55,44 @@ class HomeController extends Controller
         $related_product = Product::where('cat_id', $cat_id)->limit(4)->get();
         return View('frontend.pages.product_view', compact('product', 'categories', 'subcategories', 'brands', 'units', 'sizes', 'colors', 'related_product'));
     }
-    public function product_by_cat($id){
-        $product = Product::where('status',1)->where('cat_id',$id)->limit(12)->get();
+    public function product_by_cat($id)
+    {
+        $product = Product::where('status', 1)->where('cat_id', $id)->limit(12)->get();
         $categories = Category::all();
         $subcategories = SubCategory::all();
         $brands = Brand::all();
-        return view('frontend.pages.product_by_cat',compact('product', 'categories', 'subcategories', 'brands'));
+        return view('frontend.pages.product_by_cat', compact('product', 'categories', 'subcategories', 'brands'));
     }
-    public function product_by_subcat($id){
-        $product = Product::where('status',1)->where('subcat_id',$id)->limit(12)->get();
+    public function product_by_subcat($id)
+    {
+        $product = Product::where('status', 1)->where('subcat_id', $id)->limit(12)->get();
         $categories = Category::all();
         $subcategories = SubCategory::all();
         $brands = Brand::all();
-        return view('frontend.pages.product_by_subcat',compact('product', 'categories', 'subcategories', 'brands'));
+        return view('frontend.pages.product_by_subcat', compact('product', 'categories', 'subcategories', 'brands'));
     }
-    public function product_by_brand($id){
-        $product = Product::where('status',1)->where('brand_id',$id)->limit(12)->get();
+    public function product_by_brand($id)
+    {
+        $product = Product::where('status', 1)->where('brand_id', $id)->limit(12)->get();
         $categories = Category::all();
         $subcategories = SubCategory::all();
         $brands = Brand::all();
-        return view('frontend.pages.product_by_brand',compact('product', 'categories', 'subcategories', 'brands'));
+        return view('frontend.pages.product_by_brand', compact('product', 'categories', 'subcategories', 'brands'));
+    }
+
+    public function search(Request $request)
+    {
+        // return $request;
+
+        $product = Product::orderBy('id', 'Desc')->where('name', 'LIKE', '%' . $request->product . '%');
+        if ($request->category != 'ALL') {
+            $product->where('cat_id', $request->category);
+        }
+
+        $product = $product->get();
+        $categories = Category::all();
+        $subcategories = SubCategory::all();
+        $brands = Brand::all();
+        return view('frontend.pages.product_by_cat', compact('product', 'categories', 'subcategories', 'brands'));
     }
 }
