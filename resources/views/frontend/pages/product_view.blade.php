@@ -426,7 +426,15 @@
                                 </div>
                             </div>
                             <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                <form action="{{ url('add-to-cart') }}" method="post">
+                                    @csrf
+                                    <div class="add-to-cart">
+                                        <input type="hidden" name="quantity" value="1">
+                                        <input type="hidden" name="id" value="{{ $item->id }}">
+                                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add
+                                            to cart</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

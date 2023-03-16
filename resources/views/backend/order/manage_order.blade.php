@@ -35,7 +35,7 @@
                             <th>Order Id</th>
                             <th>Customer Name</th>
                             <th>Order Total</th>
-                            <th>Order Date and Time</th>
+                            <th>Order Date</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -46,7 +46,7 @@
                                 <td>{{ $item->id }}</td>
                                 <td class="center">{{ $customr->find($item->cus_id)->name }}</td>
                                 <td class="center">{{ $item->total }}</td>
-                                <td class="center">{{ \Carbon\Carbon::parse($item->created_at)->format('M d, Y ,h:iA') }}
+                                <td class="center">{{ \Carbon\Carbon::parse($item->created_at)->format('M d, Y') }}
                                 </td>
                                 <td class="center">
                                     @if ($item->status == 'success')

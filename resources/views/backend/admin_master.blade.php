@@ -5,7 +5,7 @@
 
     <!-- start: Meta -->
     <meta charset="utf-8">
-    <title>Bootstrap Metro Dashboard by Dennis Ji for ARM demo</title>
+    <title>Admin | Dashboard</title>
     <meta name="description" content="Bootstrap Metro Dashboard">
     <meta name="author" content="Dennis Ji">
     <meta name="keyword"
@@ -511,9 +511,9 @@
     <footer>
 
         <p>
-            <span style="text-align:left;float:left">&copy; 2013 <a
-                    href="http://jiji262.github.io/Bootstrap_Metro_Dashboard/"
-                    alt="Bootstrap_Metro_Dashboard">Bootstrap Metro Dashboard</a></span>
+            <span style="text-align:left;float:left">&copy; 2023 <a
+                    href="#"
+                    alt="Bootstrap_Metro_Dashboard">Abc Limited</a></span>
 
         </p>
 
