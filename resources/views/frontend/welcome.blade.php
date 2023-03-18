@@ -3,8 +3,8 @@
 @section('content')
     <style>
         .carousel {
-            margin-left: 20%;
-            margin-right: 20%;
+            margin-left: 0%;
+            margin-right: 0%;
         }
 
         ul.slides {
@@ -102,8 +102,8 @@
 
         .carousel-dots .carousel-dot {
             display: inline-block;
-            width: 30px;
-            height: 30px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             background-color: #fff;
             opacity: 0.5;
@@ -138,13 +138,22 @@
     {{-- banner --}}
 
     <div>
+
+        {{-- @foreach ($banners as $banner)
+        <h1>{{$banner->photo}}
+        </h1>
+        @endforeach --}}
+
         <div class="carousel">
             <ul class="slides">
                 <input type="radio" name="radio-buttons" id="img-1" checked />
                 <li class="slide-container">
+
                     <div class="slide-image">
-                        <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Timisoara_-_Regional_Business_Centre.jpg">
+                        @if ($banners[0]->condition == 'Promo')
+                            <img src="{{ asset('storage/' . $banners[0]->photo) }}">
+                        @endif
+
                     </div>
                     <div class="carousel-controls">
                         <label for="img-3" class="prev-slide">

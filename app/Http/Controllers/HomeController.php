@@ -6,6 +6,7 @@ use App\Models\Size;
 use App\Models\Unit;
 use App\Models\Brand;
 use App\Models\Color;
+use App\Models\Banner;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\SubCategory;
@@ -40,7 +41,9 @@ class HomeController extends Controller
             $topProducts[] = $p;
         }
         // return $topProducts;
-        return View('frontend.welcome', compact('product', 'categories', 'subcategories', 'brands', 'units', 'sizes', 'colors', 'topProducts'));
+        $banners = Banner::where('status',1)->limit(3)->get();
+
+        return View('frontend.welcome', compact('product', 'categories', 'subcategories', 'brands', 'units', 'sizes', 'colors', 'topProducts','banners'));
     }
     public function view_details($id)
     {

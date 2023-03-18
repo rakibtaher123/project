@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
@@ -79,6 +80,10 @@ Route::get('/colors/{color}', [ColorController::class, 'change_status']);
 
 Route::resource('products', ProductController::class);
 Route::get('/products/{product}', [ProductController::class, 'change_status']);
+
+
+Route::resource('banners', BannerController::class);
+Route::get('/banners/{banner}', [BannerController::class, 'change_status']);
 
 
 // order related routes

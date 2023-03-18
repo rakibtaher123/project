@@ -57,7 +57,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="{{url('/dashboard')}}"><span>Singer</span></a>
+                <a class="brand" href="{{ url('/dashboard') }}"><span>Singer</span></a>
 
                 <!-- start: Header Menu -->
                 <div class="nav-no-collapse header-nav">
@@ -434,7 +434,20 @@
                                             Product</span></a></li>
                             </ul>
                         </li>
-                        <li><a href="{{url('/manage-order')}}"><i class="icon-edit"></i><span class="hidden-tablet">
+                        <li>
+                            <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span
+                                    class="hidden-tablet">Banner</span></a>
+                            <ul>
+                                <li><a class="submenu" href="{{ url('/banners/create') }}"><i
+                                            class="icon-file-alt"></i><span class="hidden-tablet"> Add
+                                            Banner</span></a></li>
+                                <li><a class="submenu" href="{{ url('/banners/') }}"><i
+                                            class="icon-file-alt"></i><span class="hidden-tablet"> All
+                                            Banner</span></a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ url('/manage-order') }}"><i class="icon-edit"></i><span
+                                    class="hidden-tablet">
                                     Orders</span></a></li>
                         {{-- <li><a href="chart.html"><i class="icon-list-alt"></i><span class="hidden-tablet">
                                     Charts</span></a></li>
@@ -511,8 +524,7 @@
     <footer>
 
         <p>
-            <span style="text-align:left;float:left">&copy; 2023 <a
-                    href="#"
+            <span style="text-align:left;float:left">&copy; 2023 <a href="#"
                     alt="Bootstrap_Metro_Dashboard">Abc Limited</a></span>
 
         </p>

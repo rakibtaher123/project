@@ -66,6 +66,4 @@
         <!--/span-->
     </div>
     <!--/row-->
-    </div>
-    <!--/row-->
 @endsection
