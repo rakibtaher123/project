@@ -41,7 +41,7 @@ class HomeController extends Controller
             $topProducts[] = $p;
         }
         // return $topProducts;
-        $banners = Banner::where('status',1)->limit(3)->get();
+        $banners = Banner::where('status',1)->orderBy('updated_at','desc')->limit(3)->get();
 
         return View('frontend.welcome', compact('product', 'categories', 'subcategories', 'brands', 'units', 'sizes', 'colors', 'topProducts','banners'));
     }
@@ -97,5 +97,13 @@ class HomeController extends Controller
         $subcategories = SubCategory::all();
         $brands = Brand::all();
         return view('frontend.pages.product_by_cat', compact('product', 'categories', 'subcategories', 'brands'));
+    }
+    public function productAjax(){
+        $products = Product::select('name')->where('status',1)->get();
+        $data=[];
+        foreach($products as $p){
+            $data[]=$p['name'];
+        }
+        return $data;
     }
 }

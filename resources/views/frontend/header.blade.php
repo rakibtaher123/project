@@ -52,7 +52,7 @@
                                     </option>
                                 @endforeach
                             </select>
-                            <input class="input" name="product" placeholder="Search here" value="{{ request('product')}}">
+                            <input class="input" id='search_product' name="product" placeholder="Search here" value="{{ request('product')}}">
                             <button class="search-btn">Search</button>
                         </form>
                     </div>

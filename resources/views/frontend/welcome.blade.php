@@ -150,9 +150,9 @@
                 <li class="slide-container">
 
                     <div class="slide-image">
-                        @if ($banners[0]->condition == 'Promo')
+                        {{-- @if ($banners[0]->condition == 'Promo') --}}
                             <img src="{{ asset('storage/' . $banners[0]->photo) }}">
-                        @endif
+                        {{-- @endif --}}
 
                     </div>
                     <div class="carousel-controls">
