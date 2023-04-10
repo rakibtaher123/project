@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+// use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\jwt\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +17,11 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+// Route::get('/all', [HomeController::class, 'index']);
+
 Route::group([
     'middleware' => 'api',
     'prefix' => 'admin'
@@ -34,11 +38,13 @@ Route::group([
         Route::post('logout', [AuthController::class, 'logout']);
         Route::post('refresh', [AuthController::class, 'refresh']);
         Route::post('verify_token', [AuthController::class, 'verify_token']);
-        Route::get('userinfo', [AuthController::class, 'userinfo']);
-        Route::post('userinfo', [AuthController::class, 'update_userinfo']);
+        // Route::get('userinfo', [AuthController::class, 'userinfo']);
+        // Route::post('userinfo', [AuthController::class, 'update_userinfo']);
  
 });
 // frontend
+Route::get('/all', [HomeController::class, 'index']);
+
 Route::get('/view-detials/{id}', [HomeController::class, 'view_details']);
 Route::get('/product-by-cat/{id}', [HomeController::class, 'product_by_cat']);
 Route::get('/product-by-subcat/{id}', [HomeController::class, 'product_by_subcat']);
@@ -47,7 +53,7 @@ Route::get('/search', [HomeController::class, 'search']);
 Route::get('/product-list', [HomeController::class, 'productAjax']);
 Route::post('/add-to-cart', [CardController::class, 'add_to_cart']);
 Route::get('/delete-cart/{id}', [CardController::class, 'delete']);
-Route::get('/checkout', [CheckoutController::class, 'index']);
+// Route::get('/checkout', [CheckoutController::class, 'index']);
 Route::get('/login-check', [CheckoutController::class, 'login_chcek']);
 Route::post('/shiping-address', [CheckoutController::class, 'shiping_address']);
 Route::get('/payment', [CheckoutController::class, 'payment']);

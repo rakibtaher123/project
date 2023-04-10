@@ -43,6 +43,16 @@ class HomeController extends Controller
         // return $topProducts;
         $banners = Banner::where('status',1)->orderBy('updated_at','desc')->limit(3)->get();
 
+        return response()->json([
+            "success" => true,
+            "message" => "all product get successfully.",
+            "data" => [
+                "product" => $product,
+                "categories" => $categories,
+                "subcategories" => $subcategories,
+                "topProducts" => $topProducts,
+            ]
+        ]);
         return View('frontend.welcome', compact('product', 'categories', 'subcategories', 'brands', 'units', 'sizes', 'colors', 'topProducts','banners'));
     }
     public function view_details($id)
@@ -52,10 +62,19 @@ class HomeController extends Controller
         $subcategories = SubCategory::all();
         $brands = Brand::all();
         $units = Unit::all();
-        $sizes = Size::find($product->size_id);
-        $colors = Color::find($product->color_id);
-        $cat_id = $product->cat_id;
-        $related_product = Product::where('cat_id', $cat_id)->limit(4)->get();
+        // $sizes = Size::find($product->size_id);
+        // $colors = Color::find($product->color_id);
+        // $cat_id = $product->cat_id;
+        // $related_product = Product::where('cat_id', $cat_id)->limit(4)->get();
+        return response()->json([
+            "success" => true,
+            "message" => "view_details product get successfully.",
+            "data" => [
+                "product" => $product,
+                "categories" => $categories,
+                "subcategories" => $subcategories,
+            ]
+        ]);
         return View('frontend.pages.product_view', compact('product', 'categories', 'subcategories', 'brands', 'units', 'sizes', 'colors', 'related_product'));
     }
     public function product_by_cat($id)
