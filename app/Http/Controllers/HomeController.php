@@ -43,16 +43,16 @@ class HomeController extends Controller
         // return $topProducts;
         $banners = Banner::where('status',1)->orderBy('updated_at','desc')->limit(3)->get();
 
-        return response()->json([
-            "success" => true,
-            "message" => "all product get successfully.",
-            "data" => [
-                "product" => $product,
-                "categories" => $categories,
-                "subcategories" => $subcategories,
-                "topProducts" => $topProducts,
-            ]
-        ]);
+        // return response()->json([
+        //     "success" => true,
+        //     "message" => "all product get successfully.",
+        //     "data" => [
+        //         "product" => $product,
+        //         "categories" => $categories,
+        //         "subcategories" => $subcategories,
+        //         "topProducts" => $topProducts,
+        //     ]
+        // ]);
         return View('frontend.welcome', compact('product', 'categories', 'subcategories', 'brands', 'units', 'sizes', 'colors', 'topProducts','banners'));
     }
     public function view_details($id)

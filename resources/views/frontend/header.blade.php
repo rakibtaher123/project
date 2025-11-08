@@ -1,4 +1,39 @@
 <header>
+    <style>
+        .search-form {
+            display: flex;
+            gap: 5px;
+            /* space between elements */
+            align-items: center;
+        }
+
+        .search-select {
+            flex: 1;
+            /* takes 1 part of available width */
+            padding: 5px 10px;
+        }
+
+        .search-input {
+            flex: 2;
+            /* takes 2 parts of width */
+            padding: 5px 10px;
+        }
+
+        .search-btn {
+            flex: 0;
+            /* auto width */
+            padding: 6px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .search-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
     <!-- TOP HEADER -->
     <div id="top-header">
         <div class="container">
@@ -41,22 +76,27 @@
                 <!-- SEARCH BAR -->
                 <div class="col-md-6">
                     <div class="header-search">
-                        <form action="{{ url('/search') }}" method="GET">
-                            <select class="input-select" name="category">
+                        <form action="{{ url('/search') }}" method="GET"
+                            style="display: flex; gap: 5px; align-items: center;">
+                            <select class="input-select" name="category" style="flex: 1;">
                                 <option value="ALL" {{ request('category') == 'ALL' ? 'selected' : '' }}>All
-                                    Categories
-                                </option>
+                                    Categories</option>
                                 @foreach ($categories as $item)
                                     <option value="{{ $item->id }}"
-                                        {{ request('category') == $item->id ? 'selected' : '' }}>{{ $item->name }}
+                                        {{ request('category') == $item->id ? 'selected' : '' }}>
+                                        {{ $item->name }}
                                     </option>
                                 @endforeach
                             </select>
-                            <input class="input" id='search_product' name="product" placeholder="Search here" value="{{ request('product')}}">
-                            <button class="search-btn">Search</button>
+
+                            <input class="input" id="search_product" name="product" placeholder="Search here"
+                                value="{{ request('product') }}" style="flex: 2;">
+
+                            <button class="search-btn" type="submit" style="flex: 0;">Search</button>
                         </form>
                     </div>
                 </div>
+
                 <!-- /SEARCH BAR -->
 
                 <!-- ACCOUNT -->

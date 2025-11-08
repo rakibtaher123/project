@@ -62,3 +62,52 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+<p align="center">
+  <a href="https://laravel.com" target="_blank">
+    <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+  <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+  <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+  <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
+
+## About Laravel
+
+Laravel is a web application framework with expressive, elegant syntax. It simplifies common web development tasks such as routing, sessions, caching, ORM, migrations, background jobs, and real-time broadcasting.
+
+## About This Project
+
+This is a **Laravel-based e-commerce application** with full features including:
+
+- Categories, sub-categories, brands, products, and banners
+- Product search functionality
+- Admin management panel
+- Image upload and storage
+- Database migrations and seeders for initial data
+
+---
+
+## Requirements
+
+- PHP 8.3+
+- Composer
+- MySQL or MariaDB
+- Node.js & NPM (optional, for frontend assets)
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
+cd ecommerce-app
+chmod +x setup.sh
+./setup.sh
