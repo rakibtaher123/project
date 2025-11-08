@@ -41,4 +41,52 @@ class CustomerController extends Controller
         Session::flush();
         return Redirect::to('/');
     }
+
+    public function profile()
+    {
+        $customerId = Session::get('id');
+
+        if (!$customerId) {
+            return Redirect::to('login-check');
+        }
+
+        $customer = Customer::find($customerId);
+
+        return view('frontend.pages.customer_profile', compact('customer'));
+    }
+
+    public function editProfile()
+    {
+        $customerId = Session::get('id');
+        if (!$customerId) {
+            return Redirect::to('login-check');
+        }
+
+        $customer = Customer::find($customerId);
+        return view('frontend.pages.edit_profile', compact('customer'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $customerId = Session::get('id');
+        if (!$customerId) {
+            return Redirect::to('login-check');
+        }
+
+        $customer = Customer::find($customerId);
+        $customer->name = $request->name;
+        $customer->mobile = $request->mobile;
+        $customer->email = $request->email;
+
+        // যদি তুমি চাই Password আপডেট করার সুযোগও দিতে, নিচের লাইন আনকমেন্ট করো
+        // if ($request->filled('password')) {
+        //     $customer->password = $request->password;
+        // }
+
+        $customer->save();
+
+        Session::put('name', $customer->name); // সেশন আপডেট করা
+        return Redirect::to('customer')->with('success', 'Profile updated successfully!');
+    }
+
 }

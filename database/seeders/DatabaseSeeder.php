@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         DB::table('admins')->insert([
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
-            'password' => Hash::make('123456'),
+            'password' => md5('123456'),
             'phone' => '01700000001',
             'created_at' => now(),
             'updated_at' => now(),
@@ -85,9 +85,9 @@ class DatabaseSeeder extends Seeder
 
         // 6. Colors
         DB::table('colors')->insert([
-            ['color' => 'Red', 'status' => 1, 'created_at' => now(), 'updated_at' => now()],
-            ['color' => 'Blue', 'status' => 1, 'created_at' => now(), 'updated_at' => now()],
-            ['color' => 'Green', 'status' => 1, 'created_at' => now(), 'updated_at' => now()],
+            ['color' => ['Black','Red'], 'status' => 1, 'created_at' => now(), 'updated_at' => now()],
+            ['color' => ['Black','Blue'], 'status' => 1, 'created_at' => now(), 'updated_at' => now()],
+            ['color' => ['Black','Green'], 'status' => 1, 'created_at' => now(), 'updated_at' => now()],
         ]);
 
         // 7. Products

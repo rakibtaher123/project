@@ -107,7 +107,7 @@ This is a **Laravel-based e-commerce application** with full features including:
 Clone the repository:
 
 ```bash
-git clone https://github.com/SabbirHR/ecommerce-app.git
+git clone https://github.com/rakibtaher123/project.git
 cd ecommerce-app
 chmod +x setup.sh
 ./setup.sh

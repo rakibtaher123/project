@@ -50,6 +50,9 @@ Route::post('/order-place', [CheckoutController::class, 'order_place']);
 Route::post('/customer-login', [CustomerController::class, 'login']);
 Route::post('/customer-registration', [CustomerController::class, 'registration']);
 Route::get('/customer-logout', [CustomerController::class, 'logout']);
+Route::get('/customer', [CustomerController::class, 'profile']);
+Route::get('/customer/edit', [CustomerController::class, 'editProfile']);
+Route::post('/customer/update', [CustomerController::class, 'updateProfile']);
 
 
 // backend

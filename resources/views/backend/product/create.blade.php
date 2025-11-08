@@ -158,6 +158,7 @@
 
                         <div class="form-actions">
                             <button type="submit" class="btn btn-primary">Add Product</button>
+
                         </div>
                     </fieldset>
                 </form>
